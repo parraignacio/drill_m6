@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2 id="titlelist">Listado de vehículos</h2>
+        <table class="table" id="vlista">
+            <thead>
+                <tr> 
+                    <th scope="col">Marca</th>
+                    <th scope="col">Modelo</th>
+                    <th scope="col">Serial Carroceria</th>
+                    <th scope="col">Serial Motor</th>
+                    <th scope="col">Categoría</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Condición de Precio</th>
+                </tr>
+            </thead>
+            <tbody> 
+            {% for vehiculo in vehiculos %}
+                <tr>
+                    {% if vehiculo.marca == "1" %} 
+                        <td> Ford </td>
+                    {% elif vehiculo.marca == "2" %}
+                        <td> Fiat </td>
+                    {% elif vehiculo.marca == "3" %}
+                        <td> Chevrolet </td>
+                    {% else %}
+                        <td> Toyota </td>
+                    {% endif %}
+                    <td>{{ vehiculo.modelo }}</td>
+                    <td>{{ vehiculo.serial_carroceria }}</td>
+                    <td>{{ vehiculo.serial_motor }}</td>
+                    {% if vehiculo.categoria == "P" %} 
+                        <td> Particular </td>
+                    {% elif vehiculo.categoria == "T" %}
+                        <td> Transporte </td>
+                    {% else %}
+                        <td> Carga </td>
+                    {% endif %}
+                    <td>{{ vehiculo.precio }}</td>
+                    <td>{{ vehiculo.get_condicion }}</td>
+                </tr> 
+            {% endfor %}
+            </tbody>
+        </table>
+{% endblock content %}
