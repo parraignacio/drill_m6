@@ -1,17 +1,19 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.views import View
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import Permission
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-from django.urls import reverse_lazy
+
 from .forms import VehiculoForm, RegistroUsuarioForm
 from .models import VehiculoModel
-from urllib.parse import unquote
+
 from tokenize import PseudoExtras
-from django.views.generic import TemplateView, FormView
+
+from django.views.generic import TemplateView
+
 
 def indexView(request): 
     template_name = 'index.html'
